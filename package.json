@@ -1,0 +1,50 @@
+{
+  "name": "@qduc/web-fetch",
+  "version": "0.1.0",
+  "description": "Fetch web pages and convert HTML to Markdown with readability extraction and continuation support.",
+  "license": "MIT",
+  "author": "qduc",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/qduc/web-fetch.git"
+  },
+  "homepage": "https://github.com/qduc/web-fetch",
+  "bugs": {
+    "url": "https://github.com/qduc/web-fetch/issues"
+  },
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "ava"
+  },
+  "dependencies": {
+    "@mozilla/readability": "^0.6.0",
+    "jsdom": "^27.4.0",
+    "turndown": "^7.2.2"
+  },
+  "devDependencies": {
+    "@ava/typescript": "^6.0.0",
+    "@types/node": "^24.10.1",
+    "ava": "^6.4.1",
+    "typescript": "^5.9.3"
+  },
+  "ava": {
+    "environmentVariables": {
+      "NODE_NO_WARNINGS": "1"
+    },
+    "typescript": {
+      "compile": "tsc"
+    }
+  }
+}
