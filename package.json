@@ -1,6 +1,6 @@
 {
   "name": "@qduc/web-fetch",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Fetch web pages and convert HTML to Markdown with readability extraction and continuation support.",
   "license": "MIT",
   "author": "qduc",
@@ -13,10 +13,23 @@
     "url": "https://github.com/qduc/web-fetch/issues"
   },
   "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
   "publishConfig": {
     "access": "public"
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
+    }
   },
   "files": [
     "dist"
@@ -25,7 +38,9 @@
     "node": ">=20"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
     "test": "ava"
   },
   "dependencies": {
